@@ -22,6 +22,6 @@ class IsAdmin
             }
             return abort('403', 'Bạn không đủ thẩm quyền');
         }
-        return abort('403', 'Bạn không đủ thẩm quyền');
+        return redirect()->route('login-admin');
     }
 }

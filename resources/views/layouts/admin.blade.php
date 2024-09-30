@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min2167.css?v=3.2.0') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css">
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -51,6 +53,8 @@
 
 
 
+
+
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -67,9 +71,51 @@
 
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 
-    <script src="{{ asset('dist/js/demo.js') }}"></script>
+    {{-- <script src="{{ asset('dist/js/demo.js') }}"></script> --}}
 
     <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('#logout-button').click(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, logout!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If confirmed, submit the logout form
+                        document.getElementById('logout-form').submit();
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            @if (Session::has('message'))
+                $.toast({
+                    heading: 'Thông báo',
+                    text: '{{ Session::get('message') }}',
+                    showHideTransition: 'slide',
+                    icon: '{{ Session::get('type') }}',
+                    position: 'top-right',
+                    hideAfter: 4000,
+                    stack: false,
+                    bgColor: '#4CAF50',
+                    textColor: '#ffffff'
+
+                });
+            @endif
+        });
+    </script>
 </body>
 
 </html>

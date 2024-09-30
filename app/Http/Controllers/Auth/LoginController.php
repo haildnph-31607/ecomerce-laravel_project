@@ -51,7 +51,11 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
            if(Auth::user()->isAdmin === 1){
-            return redirect()->route('dashboard');
+            $notification = [
+                'message'=>'Login Successfully',
+                'type'=>'success'
+            ];
+            return redirect()->route('dashboard')->with($notification);
 
            }else{
             return redirect()->intended('home');

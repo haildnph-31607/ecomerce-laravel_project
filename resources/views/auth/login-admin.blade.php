@@ -9,6 +9,10 @@
                 <div class="card-body">
                     <p class="login-box-msg">Login the admin dashboard</p>
                     <form action="{{ route('login') }}" method="post">
+                        @if (Session::has('message'))
+                            <p>{{ Session::get('message') }}</p>
+                        @endif
+
                         @csrf
                         <div class="input-group mb-3">
                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -41,7 +45,8 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                        {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}

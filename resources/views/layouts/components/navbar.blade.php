@@ -6,15 +6,13 @@
                     class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <button style="margin-top: 10px" class="btn btn-danger " title="logout" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-          <i class='bx bx-log-out-circle'></i>
-         </button>
+            <button style="margin-top: 10px" class="btn btn-danger" title="logout" id="logout-button">
+                <i class='bx bx-log-out-circle'></i>
+            </button>
 
-         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-             @csrf
-         </form>
+            <form id="logout-form" action="{{ route('logout-admin') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>

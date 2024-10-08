@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min2167.css?v=3.2.0') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -51,28 +53,31 @@
         </footer> --}}
     </div>
 
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 
+    <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
+    <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
+    <script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
+    <script src="{{asset('dist/js/adminlte.min2167.js?v=3.2.0')}}"></script>
 
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-
-    <script src="{{ asset('dist/js/adminlte2167.js?v=3.2.0') }}"></script>
-
-
+    <script src="{{asset('dist/js/demo.js')}}"></script>
     <script src="{{ asset('plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
     <script src="{{ asset('plugins/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
     <script src="{{ asset('plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
-
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-
-    {{-- <script src="{{ asset('dist/js/demo.js') }}"></script> --}}
-
     <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -114,6 +119,25 @@
 
                 });
             @endif
+        });
+    </script>
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
     </script>
 </body>

@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+       public function __construct()
+
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.category.categories.index');
     }
 
     /**
